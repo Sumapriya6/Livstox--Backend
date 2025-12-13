@@ -13,13 +13,13 @@ export async function handler(event) {
 
   const q = await res.json();
 
-  let decision = "HOLD";
+  let decision = "WAIT";
   let reason = "Market is neutral";
 
-  if (q.dp > 2) {
+  if (q.dp > 1) {
     decision = "BUY";
     reason = "Price is moving up strongly";
-  } else if (q.dp < -2) {
+  } else if (q.dp < -1) {
     decision = "AVOID";
     reason = "Price is falling";
   }
